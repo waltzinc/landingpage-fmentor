@@ -1,0 +1,147 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    display: grid;
+    grid-template-areas: 
+                        "cabecalho cabecalho cabecalho cabecalho"
+                        "container container container container"
+                        "rodape rodape rodape rodape";
+
+    grid-template-columns: repeat(4, 1fr);
+    font-size: 1.6rem;
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(to right, hsla(257, 40%, 49%, 0.5), hsla(300, 69%, 71%, 0.5)), url('../images/bg-desktop.svg') center center no-repeat;
+}
+
+@media (max-width: 720px){
+    body {
+        background: linear-gradient(to right, hsla(257, 40%, 49%, 0.5), hsla(300, 69%, 71%, 0.5)), url('../images/bg-mobile.svg') center center no-repeat;
+    }
+}
+
+/* HEADER */
+
+.cabecalho {
+    display: flex;
+    grid-area: cabecalho;
+    height: 9rem;
+}
+
+.cabecalho a {
+    margin-left: 7rem;
+    margin-top: 3rem;
+}
+
+.cabecalho a img {
+    width: 180px;
+   
+}
+
+@media (max-width: 720px) {
+    .cabecalho a img {
+        width: 250px;
+    }
+}
+
+/* CONTAINER */
+
+.container {
+    grid-area: container;
+    display: flex;
+    height: 75vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.container img {
+    width: 700px;
+    margin-right: 3rem;
+}
+
+.container .informacoes {
+    max-width: 500px;
+    color: #fff;
+    margin-top: 6rem;
+}
+
+.container .informacoes h1 {
+    font-weight: 700;
+    font-size: 3.5rem;
+}
+
+.container .informacoes p {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
+.container .informacoes button {
+    font-size: 2rem;
+    margin-top: 1rem;
+    padding: 1.5rem 5rem;
+    color: blueviolet;
+    background-color: #ffffff;
+    border-radius: 2rem;
+}
+
+@media (max-width: 720px) {
+    .container {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+    }
+
+    .container img {
+        width: 600px;
+    }
+
+    .container .informacoes {
+        width: 100%;
+        text-align: center;
+    }
+
+    .container .informacoes h1 {
+        font-size: 4.5rem;
+    }
+
+    .container .informacoes p {
+        font-size: 2.5rem;
+    }
+
+    .container .informacoes button {
+        justify-content: center;
+    }
+}
+
+/* FOOTER */
+
+.rodape {
+    grid-area: rodape;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.rodape .social a {
+    font-size: 3rem;
+    margin: 0 5px;
+}
+
+.rodape .social a:last-child{
+    margin-right: 5rem;
+}
+
+@media (max-width: 720px) {
+    .rodape {
+        justify-content: center;
+    }
+
+    .rodape .social a {
+        font-size: 5rem;
+    }
+
+    .rodape .social a:last-child {
+        margin: 0;
+    }
+}
