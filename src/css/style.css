@@ -1,23 +1,46 @@
+:root{
+    --font-sans: 'Open Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    --font-mono: 'Fira Code', monospace;
+    --bg-gradient-from: hsla(293, 86%, 43%, 0.5);
+    --bg-gradient-to: hsla(266, 100%, 46%, 0.705);
+    --accent: blueviolet;
+    --white: #ffffff;
+    --container-max: 1200px;
+    --radius: 2rem;
+}
+
+
 html {
-    font-size: 62.5%;
+    font-size: 62.5%; /* 1rem = 10px */
 }
 
 body {
     display: grid;
-    grid-template-areas: 
-                        "cabecalho cabecalho cabecalho cabecalho"
-                        "container container container container"
-                        "rodape rodape rodape rodape";
-
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+        "cabecalho"
+        "container"
+        "rodape";
+    grid-template-columns: 1fr;
+    gap: 2rem;
     font-size: 1.6rem;
-    font-family: 'Open Sans', sans-serif;
-    background: linear-gradient(to right, hsla(257, 40%, 49%, 0.5), hsla(300, 69%, 71%, 0.5)), url('../images/bg-desktop.svg') center center no-repeat;
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    background-color: #4b2a7d;
+    background: linear-gradient(to right, var(--bg-gradient-from), var(--bg-gradient-to)), url('../images/bg-mobile.svg') center center no-repeat;
+    background-size: cover;
+    background-blend-mode: multiply;
+    color: #111;
 }
 
-@media (max-width: 720px){
+@media (min-width: 1028px){
     body {
-        background: linear-gradient(to right, hsla(257, 40%, 49%, 0.5), hsla(300, 69%, 71%, 0.5)), url('../images/bg-mobile.svg') center center no-repeat;
+        grid-template-areas: 
+            "cabecalho cabecalho cabecalho cabecalho"
+            "container container container container"
+            "rodape rodape rodape rodape";
+        grid-template-columns: repeat(4, 1fr);
+    background-image: linear-gradient(to right, var(--bg-gradient-from), var(--bg-gradient-to)), url('../images/bg-desktop.svg');
+    background-blend-mode: multiply;
     }
 }
 
@@ -35,13 +58,14 @@ body {
 }
 
 .cabecalho a img {
-    width: 180px;
-   
+    width: 160px;
+    height: auto;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 1028px) {
+  
     .cabecalho a img {
-        width: 250px;
+        width: 220px;
     }
 }
 
@@ -56,50 +80,87 @@ body {
 }
 
 .container img {
-    width: 700px;
+    width: 90%;
+    max-width: 700px;
     margin-right: 3rem;
 }
 
 .container .informacoes {
-    max-width: 500px;
-    color: #fff;
-    margin-top: 6rem;
+    max-width: 520px;
+    color: var(--white);
+    margin-top: 4rem;
 }
 
 .container .informacoes h1 {
     font-weight: 700;
-    font-size: 3.5rem;
+    font-size: 3.2rem;
+    line-height: 1.05;
 }
 
 .container .informacoes p {
     font-size: 1.5rem;
     margin-top: 1rem;
+    opacity: 0.95;
 }
 
 .container .informacoes button {
+    cursor: pointer;
     font-size: 2rem;
-    margin-top: 1rem;
-    padding: 1.5rem 5rem;
-    color: blueviolet;
-    background-color: #ffffff;
-    border-radius: 2rem;
+    margin-top: 1.5rem;
+    padding: 1.3rem 4rem;
+    color: var(--accent);
+    background-color: var(--white);
+    border-radius: var(--radius);
+    transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
 }
 
-@media (max-width: 720px) {
+.btn-primary {
+    display: inline-block;
+    text-align: center;
+}
+
+.container .informacoes button:hover,
+.container .informacoes button:focus {
+    transform: translateY(-3px);
+    background-color: #e980e7;
+    box-shadow: 0 12px 30px rgba(16,24,40,0.08);
+}
+
+
+@media (max-width: 1028px) {
     .container {
        display: flex;
        flex-direction: column;
        align-items: center;
        justify-content: center;
+       padding: 2rem;
     }
 
     .container img {
-        width: 600px;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 0 2rem 0;
     }
 
     .container .informacoes {
         width: 100%;
         text-align: center;
+        margin-top: 0;
+    }
+
+    .container .informacoes h1 {
+        font-size: 3.6rem;
+    }
+
+    .container .informacoes p {
+        font-size: 1.9rem;
+    }
+
+}
+
+@media (min-width: 720px) {
+    .container {
+        padding: 0 3rem;
     }
 
     .container .informacoes h1 {
@@ -107,11 +168,7 @@ body {
     }
 
     .container .informacoes p {
-        font-size: 2.5rem;
-    }
-
-    .container .informacoes button {
-        justify-content: center;
+        font-size: 2rem;
     }
 }
 
@@ -125,20 +182,21 @@ body {
 
 .rodape .social a {
     font-size: 3rem;
-    margin: 0 5px;
+    color: var(--white);
 }
 
 .rodape .social a:last-child{
     margin-right: 5rem;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 1028px) {
     .rodape {
         justify-content: center;
+        padding: 2rem 0;
     }
 
     .rodape .social a {
-        font-size: 5rem;
+        font-size: 4.2rem;
     }
 
     .rodape .social a:last-child {
